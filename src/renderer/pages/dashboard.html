@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - Resumen Gerencial</title>
+    <link href="../vendor/bootstrap.min.css" rel="stylesheet">
+    <script src="../js/session.js"></script>
+    <script src="../vendor/chart.umd.min.js"></script>
+    <style>
+        body { background-color: #12141d; color: white; }
+        .navbar { background-color: #1a1c2c !important; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .card { background-color: #1e2132; border: none; border-radius: 12px; }
+        .card-header { border-bottom: 1px solid rgba(255,255,255,0.1); color: #a855f7; font-weight: bold; }
+        .bg-success-grad { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
+        .bg-info-grad { background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); }
+        .btn-primary { background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); border: none; }
+        .form-control { background-color: #0d0e14; border: 1px solid #2d2f3f; color: white; }
+        .form-control:focus { background-color: #0d0e14; color: white; border-color: #6366f1; box-shadow: none; }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+        <span class="navbar-brand">Gestor de Ventas</span>
+        <div class="d-flex">
+            <a href="registrar_venta.html" class="btn btn-primary me-2">➕ Registrar Venta</a>
+            <a href="dashboard.html" class="btn btn-outline-light me-2 active">Dashboard</a>
+            <a href="ranking_clientes.html" class="btn btn-outline-light me-2">Ranking</a>
+            <a href="ver_ventas.html" class="btn btn-outline-light me-2">Ver Ventas</a>
+            <a href="#" id="logoutBtn" class="btn btn-outline-danger">Cerrar sesión</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <h2 class="mb-4">Bienvenido, <span id="nombreUsuario" class="text-info">---</span></h2>
+
+    <div class="row mb-5 text-white">
+        <div class="col-md-6">
+            <div class="card bg-success-grad shadow mb-3">
+                <div class="card-body">
+                    <h5 class="card-title text-white-50">Ganancia Total Acumulada</h5>
+                    <p class="card-text fs-1">S/ <span id="gananciaTotal">0.00</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card bg-info-grad shadow mb-3">
+                <div class="card-body">
+                    <h5 class="card-title text-white-50">Total de Registros de Venta</h5>
+                    <p class="card-text fs-1" id="totalVentas">0</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card shadow">
+        <div class="card-header">Ganancia Mensual Histórica</div>
+        <div class="card-body">
+            <canvas id="monthlyChart" style="max-height: 400px;"></canvas>
+        </div>
+    </div>
+
+    <div class="card shadow mt-4">
+        <div class="card-header">Respaldo y Exportación</div>
+        <div class="card-body">
+            <p class="text-secondary mb-3">
+                Descargá un reporte de ventas en Excel o guardá una copia completa de la base de datos.
+                La copia incluye todas las ventas y usuarios del sistema.
+            </p>
+            <div class="d-flex gap-2 flex-wrap">
+                <button type="button" id="btnExportarDashboard" class="btn btn-outline-info">Exportar ventas a Excel</button>
+                <button type="button" id="btnBackup" class="btn btn-outline-success">Crear copia de seguridad</button>
+                <button type="button" id="btnRestaurar" class="btn btn-outline-warning">Restaurar copia</button>
+            </div>
+            <div id="mensajeRespaldo" class="small mt-3"></div>
+        </div>
+    </div>
+
+    <div class="card shadow mt-4">
+        <div class="card-header">Seguridad</div>
+        <div class="card-body">
+            <p class="text-secondary mb-3">
+                Cambiá la contraseña con la que ingresás al sistema. Debe tener al menos 8 caracteres.
+            </p>
+            <form id="passwordForm" class="row g-3">
+                <div class="col-md-4">
+                    <label class="form-label text-secondary">Contraseña actual</label>
+                    <input type="password" id="passwordActual" class="form-control" required autocomplete="current-password">
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label text-secondary">Nueva contraseña</label>
+                    <input type="password" id="passwordNueva" class="form-control" required minlength="8" autocomplete="new-password">
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label text-secondary">Repetir nueva contraseña</label>
+                    <input type="password" id="passwordRepetir" class="form-control" required minlength="8" autocomplete="new-password">
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-outline-light">Cambiar contraseña</button>
+                </div>
+            </form>
+            <div id="mensajePassword" class="small mt-3"></div>
+        </div>
+    </div>
+</div>
+
+<script src="../js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+{
+  "name": "registro-de-ventas",
+  "version": "2.0.0",
+  "description": "Sistema para el registro y gestión de ventas",
+  "author": "Leonardo Condori",
+  "main": "src/main/main.js",
+  "engines": {
+    "node": ">=20.17.0"
+  },
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "reset-password": "node scripts/reset-password.js"
+  },
+  "dependencies": {
+    "exceljs": "^4.4.0",
+    "sqlite3": "^6.0.1"
+  },
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.ventas.registros",
+    "win": {
+      "icon": "src/assets/icon.ico",
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}

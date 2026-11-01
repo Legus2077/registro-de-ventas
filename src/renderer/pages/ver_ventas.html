@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Ventas - Pro</title>
+    <link href="../vendor/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #12141d; color: white; }
+        .navbar { background-color: #1a1c2c !important; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .card { background-color: #1e2132; border: none; border-radius: 12px; margin-bottom: 20px; }
+        .card-header { border-bottom: 1px solid rgba(255,255,255,0.1); color: #a855f7; font-weight: bold; }
+        .table { color: white; border-color: rgba(255,255,255,0.05); }
+        .table-striped tbody tr:nth-of-type(odd) { background-color: rgba(255,255,255,0.02); }
+        .form-control { background-color: #0d0e14; border: 1px solid #2d2f3f; color: white; }
+        .form-control:focus { background-color: #0d0e14; color: white; border-color: #6366f1; box-shadow: none; }
+        .btn-success { background: linear-gradient(135deg, #10b981 0%, #059669 100%); border: none; }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+        <span class="navbar-brand">Gestor de Ventas</span>
+        <div class="d-flex">
+            <a href="registrar_venta.html" class="btn btn-primary me-2">➕ Registrar Venta</a>
+            <a href="dashboard.html" class="btn btn-outline-light me-2">Dashboard</a>
+            <a href="ranking_clientes.html" class="btn btn-outline-light me-2">Ranking</a>
+            <a href="ver_ventas.html" class="btn btn-outline-light me-2 active">Ver Ventas</a>
+            <a href="#" id="logoutBtn" class="btn btn-outline-danger">Cerrar sesión</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <h2 class="mb-4">Consulta y Reportes</h2>
+
+    <div class="card shadow">
+        <div class="card-header">Filtros de Búsqueda</div>
+        <div class="card-body">
+            <form id="filterForm" class="row g-3">
+                <div class="col-md-4">
+                    <label class="form-label text-secondary">DNI o Nombre</label>
+                    <input type="text" id="busqueda" class="form-control">
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label text-secondary">Año</label>
+                    <input type="number" id="anio" class="form-control" placeholder="2024">
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label text-secondary">Mes</label>
+                    <input type="number" id="mes" class="form-control" min="1" max="12">
+                </div>
+                <div class="col-md-2 d-flex align-items-end">
+                    <button type="submit" class="btn btn-success w-100">Filtrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="card shadow">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <span>Listado de Ventas</span>
+            <div class="d-flex align-items-center gap-2">
+                <span class="badge bg-primary fs-6">Total: S/ <span id="sumaTotal">0.00</span></span>
+                <button type="button" id="btnExportar" class="btn btn-sm btn-outline-success">Exportar a Excel</button>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="text-secondary">
+                        <tr>
+                            <th>Descripción</th>
+                            <th>Cliente</th>
+                            <th>DNI</th>
+                            <th>Monto</th>
+                            <th>Fecha</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaVentas">
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../js/session.js"></script>
+<script src="../js/ver_ventas.js"></script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Gestor de Ventas</title>
+    <link href="../vendor/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: radial-gradient(circle, #1a1c2c 0%, #0d0e14 100%);
+            color: white;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .login-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        }
+
+        .form-control {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .form-control:focus {
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 0.25rem rgba(99, 102, 241, 0.25);
+        }
+
+        .btn-gradiente {
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            border: none;
+            color: white;
+            font-weight: 600;
+            padding: 12px;
+            transition: transform 0.2s;
+        }
+
+        .btn-gradiente:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+            color: white;
+        }
+
+        #mensaje-error {
+            display: none;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-card">
+        <h3 class="text-center mb-4">Gestor de Ventas</h3>
+        
+        <div id="mensaje-error" class="alert alert-danger mb-3">Usuario o contraseña incorrectos</div>
+        
+        <form id="loginForm">
+            <div class="mb-3">
+                <label class="form-label text-secondary">Usuario</label>
+                <input type="text" id="username" class="form-control" required placeholder="admin">
+            </div>
+            <div class="mb-3">
+                <label class="form-label text-secondary">Contraseña</label>
+                <input type="password" id="password" class="form-control" required placeholder="••••••">
+            </div>
+            <button type="submit" class="btn btn-gradiente w-100 mt-3">Ingresar al Sistema</button>
+        </form>
+    </div>
+
+    <script src="../js/login.js"></script>
+</body>
+</html>
