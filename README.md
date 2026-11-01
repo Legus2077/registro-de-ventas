@@ -67,7 +67,7 @@ El proyecto fue desarrollado con Electron, SQLite y JavaScript, y se empaqueta c
 1. Cloná el repositorio o descargá el código como ZIP:
 
 ```bash
-git clone <URL-DEL-REPOSITORIO>
+git clone https://github.com/Legus2077/registro-de-ventas.git
 cd registro-de-ventas
 ```
 
